@@ -5,7 +5,6 @@
 - 只做一件事：在 Debian / Ubuntu 上快速拉起 sing-box 的 AnyTLS + REALITY 节点
 - 交互尽量少：端口、AnyTLS 密码、REALITY 伪装域名、short_id、密钥对
 - 不做面板、不做多用户、不做订阅、不做一堆协议混搭
-- **仓库只需要 3 个文件：`install.sh`、`xnode.sh`、`README.md`**
 
 ## 当前功能
 
@@ -22,22 +21,6 @@
 - Ubuntu 22.04+
 - systemd
 - amd64 / arm64
-
-## 上传到 GitHub
-
-把下面 3 个文件上传到仓库根目录即可：
-
-```text
-install.sh
-xnode.sh
-README.md
-```
-
-建议仓库名：
-
-```text
-anytls-reality-onekey
-```
 
 ## 一键安装
 
@@ -78,20 +61,9 @@ xnode
 
 ## 设计说明
 
-- AnyTLS 入站使用 `users[].password`，不使用 UUID。
 - REALITY 服务端使用 `handshake.server`、`private_key`、`short_id[]`。
 - 客户端模板使用 `server_name`、`public_key`、`short_id`。
 - 默认将“REALITY 伪装域名”同时作为服务端握手目标和客户端 `server_name`。
 
-## 提示
 
-- `install.sh` 只负责把 `xnode.sh` 下载到 `/opt/anytls-reality-onekey/` 并创建 `/usr/local/bin/xnode` 软链接。
-- 后续更新脚本时，重新执行一次安装命令即可覆盖本地 `xnode.sh`。
-- 如果安装失败，先检查 GitHub 上这 3 个文件是否在仓库根目录，分支是否是 `main`。
 
-## 后续可加
-
-- 自动更新 sing-box
-- 备份/恢复
-- 输出二维码
-- GitHub Release 打包
