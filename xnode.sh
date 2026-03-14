@@ -157,7 +157,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=${bin_path} run -c /etc/sing-box/config.json
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=infinity
